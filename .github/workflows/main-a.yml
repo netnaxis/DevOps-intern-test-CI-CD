@@ -29,6 +29,16 @@ jobs:
       - name: Syntax test
         run: python -m py_compile ./app.py
 
+      - name: SonarCloud Scan with Quality Gate Check
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectKey: "netnaxis_DevOps-intern-test-CI-CD"
+          organization: "netnaxis"
+          wait: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
