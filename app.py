@@ -1,7 +1,6 @@
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-app.config['WTF_CSRF_ENABLED'] = True
 
 @app.route('/', methods=['GET'])
 def handle_request():
